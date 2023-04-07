@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block content %}
+<p>Hello you are in the Probe Area {{page}} page</p>
+
+{% if number > 10 %}
+    <p>Number is grater than 10</p>
+
+{% elif number == 10%}
+    <p>Number is 10</p>
+
+{% else %}
+    <p>Number is less than 10</p>
+
+{% endif %}
+
+    <hr>
+
+    <h1>Probe Cards</h1>
+
+    <ul>
+        {% for PCout in ProbeCards %}
+
+        <li>Title</Title>:<a href="/PCout/{{PCout.id}}">{{PCout.title}}</a> </li>
+        {% endfor %}
+
+    </ul>
+
+
+{% endblock content %}

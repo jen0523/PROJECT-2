@@ -39,10 +39,23 @@ class Review(models.Model):
         return self.value
     
 
-    class Tag(models.Model):
-        name = models.CharField(max_length=500)
-        created = models.DateTimeField (auto_now_add=True)
-        id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+class Tag(models.Model):
+    name = models.CharField(max_length=500)
+    created = models.DateTimeField (auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
         
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
+
+
+class History(models.Model):
+    probe_card_id = models.CharField(max_length=500)
+    tool_id = models.CharField(max_length=500)
+    user= models.CharField(max_length=500)
+    comments = models.CharField(max_length=500)
+    date = models.DateTimeField (auto_now_add=True)
+    #aditional info
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+        
+    def __str__(self):
+        return self.probe_card_id

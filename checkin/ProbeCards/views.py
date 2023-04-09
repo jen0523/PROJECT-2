@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from .form import PcOutForm
+import sys
+
 
 projectsList = [
 
@@ -20,12 +24,24 @@ def ProbeCards(request):
     return render(request,'ProbeCards/home.html', context)
 
 
-def PCout(request, pk):
-    PCoutObj = None
-    for i in projectsList:
-        if i['id'] == pk:
-            PCoutObj = i
-    return render(request,'ProbeCards/checkout.html',{'PCout':PCoutObj})
+def PCout(request):
+    if request.method == "POST":
+        print("add data", file=sys.stderr)
+        # create a form instance and populate it with data from the request:
+        form = PcOutForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            form.save()
+            return HttpResponseRedirect("/thanks/")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = PcOutForm()
+        return render(request,'ProbeCards/checkout.html',{"form": form})
+    
 
 
 

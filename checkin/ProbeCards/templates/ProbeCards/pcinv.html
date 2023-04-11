@@ -1,6 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
-    
-    <h1>Probe Cards Inventory</h1>
 
+    <h1>Add new Probe Card</h1>
+    <form action="/probecards/formpcinvadd/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    
 {% endblock content %}

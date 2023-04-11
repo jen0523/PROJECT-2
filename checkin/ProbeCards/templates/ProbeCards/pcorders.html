@@ -1,11 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
 
-    <h1>Check in form</h1>
-    <form action="/probecards/formpcin/" method="post">
+    <h1>Probe Card Purchase</h1>
+    <form action="/probecards/formpcinvadd/" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
-    </form>
+    </-form>
     
 {% endblock content %}

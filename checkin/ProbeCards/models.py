@@ -51,11 +51,57 @@ class Tag(models.Model):
 class History(models.Model):
     probe_card_id = models.CharField(max_length=500)
     tool_id = models.CharField(max_length=500)
+    issue_by= models.CharField(max_length=500)
     user= models.CharField(max_length=500)
     comments = models.CharField(max_length=500)
     date = models.DateTimeField (auto_now_add=True)
-    #aditional info
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
         
     def __str__(self):
         return self.probe_card_id
+    
+class Historyin(models.Model):
+    probe_card_id = models.CharField(max_length=500)
+    technician = models.CharField(max_length=500)
+    burned_needles = models.CharField(max_length=500)
+    melted_needles = models.CharField(max_length=500)
+    bent_needles = models.CharField(max_length=500)
+    phisical_issue = models.CharField(max_length=500)
+    comments = models.CharField(max_length=500)
+    probe_count_notes= models.CharField(max_length=500)
+    action_taken = models.CharField(max_length=500)
+    rework_sanding_cycles = models.CharField(max_length=500)
+    date = models.DateTimeField (auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+        
+    def __str__(self):
+        return self.technician
+
+class Historyadd(models.Model):
+    probe_card_id = models.CharField(max_length=500)
+    vendor_name= models.CharField(max_length=500)
+    vendor = models.CharField(max_length=500)
+    arrived = models.CharField(max_length=500)
+    vendor_serial = models.CharField(max_length=500)
+    comments = models.CharField(max_length=500)
+    status = models.CharField(max_length=500)
+    date = models.DateTimeField (auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.vendor
+    
+class Historyorder(models.Model):
+    po_number = models.CharField(max_length=500)
+    vendor = models.CharField(max_length=500)
+    probe_card_id = models.CharField(max_length=500)
+    vendor_name= models.CharField(max_length=500)
+    quantity= models.CharField(max_length=500)
+    price= models.CharField(max_length=500)
+    order_date = models.CharField(max_length=500)
+    date = models.DateTimeField (auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.po_number
+    

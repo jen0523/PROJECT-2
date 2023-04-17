@@ -2,10 +2,10 @@
 {% block content %}
 
     <h1>Check out form</h1>
+    <hr>
     <form action="/probecards/formpcout/" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
     </form>
-    
 {% endblock content %}
